@@ -1,3 +1,9 @@
-module github.com/Yallamaztar/iw4m-go.git
+module github.com/Yallamaztar/iw4m-go
 
 go 1.24.4
+
+require (
+	github.com/PuerkitoBio/goquery v1.10.3
+	github.com/andybalholm/cascadia v1.3.3 // indirect
+	golang.org/x/net v0.39.0 // indirect
+)

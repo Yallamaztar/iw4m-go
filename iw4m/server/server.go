@@ -649,3 +649,18 @@ func (s *Server) PlayerCount() int {
 	}
 	return len(players)
 }
+
+func (s *Server) IsServerFull() bool {
+	info, _ := s.Info()
+	return info.TotalConnectedClients >= info.TotalClientSlots
+}
+
+func (s *Server) FindAdmin(username string) Admin {
+	admins, _ := s.Admins("all", 1000)
+	for _, admin := range admins {
+		if strings.EqualFold(strings.ToLower(admin.Name), strings.ToLower(username)) {
+			return admin
+		}
+	}
+	return Admin{}
+}

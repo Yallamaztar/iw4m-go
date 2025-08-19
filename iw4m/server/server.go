@@ -641,3 +641,11 @@ func (s *Server) TopPlayers(count int) ([]TopPlayer, error) {
 
 	return players, nil
 }
+
+func (s *Server) PlayerCount() int {
+	players, err := s.ListPlayers()
+	if err != nil {
+		return 0
+	}
+	return len(players)
+}

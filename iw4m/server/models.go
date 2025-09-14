@@ -4,12 +4,12 @@ type ServerStatus struct {
 	ID             int            `json:"id"`
 	IsOnline       bool           `json:"isOnline"`
 	Name           string         `json:"name"`
-	MaxPlayers     int            `json:"maxPlayers"`
-	CurrentPlayers int            `json:"currentPlayers"`
+	MaxPlayers     int8           `json:"maxPlayers"`
+	CurrentPlayers int8           `json:"currentPlayers"`
 	Map            mapStatus      `json:"map"`
 	GameMode       string         `json:"gameMode"`
 	ListenAddress  string         `json:"listenAddress"`
-	ListenPort     int            `json:"listenPort"`
+	ListenPort     int32          `json:"listenPort"`
 	Game           string         `json:"game"`
 	Players        []playerStatus `json:"players"`
 }

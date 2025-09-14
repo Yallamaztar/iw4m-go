@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/Yallamaztar/iw4m-go"
+	"github.com/Yallamaztar/iw4m-go/iw4m"
 )
 
 type Server struct {
@@ -663,4 +663,26 @@ func (s *Server) FindAdmin(username string) Admin {
 		}
 	}
 	return Admin{}
+}
+
+func (s *Server) OnlinePlayersByRole(role string) ([]Players, error) {
+	var found []Players
+
+	players, err := s.ListPlayers()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, p := range players {
+		if strings.EqualFold(p.Role, role) {
+			found = append(found, p)
+		}
+	}
+
+	return found, nil
+}
+
+func (s *Server) CommandPrefix() string {
+	log, _ := s.RecentAuditLog()
+	return string(log.Data[0])
 }
